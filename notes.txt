@@ -1,0 +1,38 @@
+* Redux is a predictable state container for JS applications.
+* React - redux is a seperate library that provides bindings to use React & Redux together in applications.
+
+* Three core concepts:
+  1. A 'Store' that holds the state of your application.
+  2. An 'Action' that describes the changes in state of application.
+  3. A 'Reducer' which actually carries out the state transition, depending on the action.
+
+
+* What are the three principles in redux :
+  1. The state of your whole application is stored in an object tree within a single store.
+  2. The only way to change the state is to dispatch an action, an object describing what happened.
+  3. To specify how the state tree is transformed by actions, you write pure reducers.
+     (Pure reducer is a function that accepts prev. state and action, and returns new state)
+
+* Actions: 
+ - plain javascript objects.
+ - have a "type" property that indicates the type of action being performed.
+
+
+* Middleware:
+  - provides a third-party extension point b/w dispatching an action, and the moment it reaches the reducer.
+  - use Middleware for logging, crash reporting, performing async tasks, etc.
+  - a middleware called Redux thunk allows us to perform asynchronous operations in actionCreator function
+    Ex =>  const store = redux.createStore(reducer, applyMiddleware(thunkMiddleware));
+           store.dispatch(fetchUsers())  //this fetchUsers actionCreator can now return a function that can 
+           perform async task like network request, taking 'dispatch' function as a parameter.
+
+
+* Why should you dispatch an action to update the state and not update store directly in redux? 
+  - By dispatching actions, you make state changes predictable and easier to trace.
+  - When you dispatch an action, middleware can intercept it, perform some asynchronous logic.
+  - It enhances the maintainability and debugging of your application.
+
+
+* What are some of the major features of Redux DevTools?
+  - time travel environment that makes it possible for us to live edit in Redux with a variety of functionalities like action replay
+  - makes it possible for us to inspect all the states and action payload
